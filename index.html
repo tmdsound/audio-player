@@ -3,8 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Audio Player</title>
+    <script src="js/jquery.min.js"></script>
+    <style>
+        #playlist {
+            list-style: none;
+        }
+        #playlist li a{
+            text-decoration: none;
+            color: black; 
+        }
+        #playlist .current-song a {
+            color: green;
+        }
+    </style>
 </head>
 <body>
-    
+    <audio src="Latin_Way.mp3" controls id="audioPlayer">
+        Sorry
+    </audio>
+    <ul id="playlist">
+        <li class="current-song"><a href="Latin_Way.mp3">Latin Way</a></li>
+        <li><a href="Model_Way.mp3">Model Way</a></li>
+        <li><a href="Space_Time_Cleveland_Watkiss.mp3">Space Time Cleveland Watkiss</a></li>
+
+    </ul>
+
+    <script>
+        audioPlayer();
+        function audioPlayer() {
+            $("#audioPlayer")[0].src = $("#playlist li a")[0];
+            
+
+
+            $("#playlist li a").click(function(e) {
+                e.preventDefault();
+                console.log(this);
+                $("#audioPlayer")[0].src = this;
+
+            $("#audioPlayer")[0].play();         
+            });
+           
+        }
+    </script>
 </body>
 </html>
